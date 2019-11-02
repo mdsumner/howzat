@@ -9,6 +9,14 @@
 Converts spatial objects to 'Well-known text' format  
  <https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry>.
 }
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/mdsumner/howzat}
+  \item Report bugs at \url{https://github.com/mdsumner/howzat/issues}
+}
+
+}
 \author{
 \strong{Maintainer}: Michael Sumner \email{mdsumner@gmail.com} (0000-0002-2471-7511)
 

@@ -4,8 +4,10 @@
 #' @param number matrix
 #' @noRd
 matrix_tuple <- function(x) {
-  paste(unlist(lapply(split(t(x), rep(seq_len(dim(x)[1L]), each = dim(x)[2L])), paste0, collapse = " ")),
-        collapse = ", ")
+  #paste0(unlist(lapply(split(t(x), rep(seq_len(dim(x)[1L]), each = dim(x)[2L])), paste0, collapse = " ")),
+  #      collapse = ", ")
+  glue::glue_collapse(unlist(lapply(split(t(x), rep(seq_len(dim(x)[1L]), each = dim(x)[2L])),
+                                    glue::glue_collapse, sep = " ")), ", ")
 }
 #' Format with parentheses
 #'
@@ -13,7 +15,8 @@ matrix_tuple <- function(x) {
 #' @noRd
 #' @param character string
 paren <- function(x) {
-  sprintf("(%s)", x)
+  glue::glue("({x})")
+  #sprintf("(%s)", x)
 }
 
 #' declare what's coming around a text string
@@ -23,7 +26,8 @@ paren <- function(x) {
 #' @param x character string
 #' @param DECLARATION the preamble speech
 declare <- function(x, DECLARATION) {
-  sprintf("%s %s", DECLARATION, x)
+  glue::glue("{DECLARATION} {x}")
+  #sprintf("%s %s", DECLARATION, x)
 }
 
 #' Format matrix to parenthesized character string
@@ -42,5 +46,6 @@ wkt_coords <- function(x) {
 #' @return vector of character strings
 #' @noRd
 wkt_polygon <- function(x) {
-  paren(paste(unlist(lapply(unclass(x), function(m) wkt_coords(m))), collapse = ", "))
+  #paren(paste0(unlist(lapply(unclass(x), function(m) wkt_coords(m))), collapse = ", "))
+  paren(glue::glue_collapse(unlist(lapply(unclass(x), function(m) wkt_coords(m))), sep = ", "))
 }
