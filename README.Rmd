@@ -1,0 +1,71 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# howzat
+
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/mdsumner/howzat.svg?branch=master)](https://travis-ci.org/mdsumner/howzat)
+[![AppVeyor build status](https://ci.appveyor.com/api/projects/status/github/mdsumner/howzat?branch=master&svg=true)](https://ci.appveyor.com/project/mdsumner/howzat)
+[![Codecov test coverage](https://codecov.io/gh/mdsumner/howzat/branch/master/graph/badge.svg)](https://codecov.io/gh/mdsumner/howzat?branch=master)
+<!-- badges: end -->
+
+The goal of howzat is to convert spatial objects to [WKT (Well-Known-Text) geometry format](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry). 
+
+WIP: supremely unuseable and untested for now. 
+
+## Installation
+
+You can install the  development version from [GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("mdsumner/howzat")
+```
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+```{r example}
+library(howzat)
+
+
+library(silicate)  ## just for data examples
+library(sf)        ## just to verify the formatting
+
+wkt(sfzoo$polygon)
+wkt(sfzoo$polygon) == st_as_text(sfzoo$polygon)
+wkt(st_sfc(sfzoo$multipolygon, sfzoo$multipolygon + 10))
+wkt(st_sf(a = 1, g = st_sfc(sfzoo$multipolygon)))
+wkt(sfzoo$multilinestring)
+wkt(sfzoo$multilinestring) == st_as_text(sfzoo$multilinestring)
+wkt(sfzoo$linestring)
+wkt(sfzoo$linestring) == st_as_text(sfzoo$linestring)
+wkt(sfzoo$multipoint)
+wkt(sfzoo$multipoint) == st_as_text(sfzoo$multipoint)
+wkt(sfzoo$point)
+wkt(sfzoo$point) == st_as_text(sfzoo$point)
+
+
+wkt(sfzoo$multipolygon)
+wkt(sfzoo$multipolygon) == st_as_text(sfzoo$multipolygon)
+
+```
+
+
+---
+
+Please note that the 'howzat' project is released with a
+  [Contributor Code of Conduct](CODE_OF_CONDUCT.md).
+  By contributing to this project, you agree to abide by its terms.

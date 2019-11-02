@@ -1,0 +1,19 @@
+Package: howzat
+Title: Convert Spatial Objects to 'Well-known text'
+Version: 0.1.0
+Authors@R: 
+  c(person("Michael", "Sumner", 
+      email = "mdsumner@gmail.com", 
+      role = c("aut", "cre"), comment = c(ORCID = "0000-0002-2471-7511")))
+Description: Converts spatial objects to 'Well-known text' format  
+ <https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry>. 
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 2.10)
+RoxygenNote: 6.1.1
+Suggests: 
+    covr,
+    testthat (>= 2.1.0)
+URL: https://github.com/mdsumner/howzat
+BugReports: https://github.com/mdsumner/howzat/issues
